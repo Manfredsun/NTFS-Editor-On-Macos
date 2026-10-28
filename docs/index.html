@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NTFS Editor for macOS — 原生輕巧、安全無縫的 NTFS 讀寫工具</title>
+  <meta name="description" content="專為 macOS 設計的原生選單列 NTFS 讀寫工具。透過 macFUSE 核心 VFS 與 NTFS-3G，一鍵切換讀寫掛載，Finder 原生拖曳管理，完全開源且免費。">
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --accent-glow: rgba(59, 130, 246, 0.25);
+      --code-bg: #16181d;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Helvetica Neue", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient background lighting */
+    .glow-bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(11, 12, 16, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    header {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 1.15rem;
+    }
+
+    .logo-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+    }
+
+    .btn-small {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-small:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 70px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #38bdf8;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+
+    .hero-icon {
+      width: 110px;
+      height: 110px;
+      border-radius: 24px;
+      box-shadow: 0 12px 36px var(--accent-glow);
+      margin-bottom: 28px;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hero-icon:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 8px 24px var(--accent-glow);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Features */
+    .section-title {
+      text-align: center;
+      margin: 80px 0 48px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Workflow Banner */
+    .workflow-box {
+      margin: 80px 0;
+      background: linear-gradient(180deg, rgba(22, 24, 29, 0.8) 0%, rgba(11, 12, 16, 0.8) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .step-item {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #60a5fa;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .step-item h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .step-item p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* System requirements */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+
+    .specs-table th, .specs-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .specs-table th {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      width: 30%;
+    }
+
+    .specs-table td {
+      font-size: 0.95rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--card-border);
+      padding: 24px 0;
+    }
+
+    .faq-item h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 100px;
+      padding: 40px 0 60px;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--text-main);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .steps {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg"></div>
+
+  <div class="container">
+    <header>
+      <a href="#" class="logo-group">
+        <img src="assets/app-icon.png" alt="NTFS Editor Icon" class="logo-img">
+        <span>NTFS Editor</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features" class="nav-link">功能亮點</a>
+        <a href="#install" class="nav-link">安裝步驟</a>
+        <a href="#faq" class="nav-link">常見問題</a>
+        <a href="https://github.com/Manfredsun/NTFS-Editor-On-Macos" target="_blank" class="btn-small">GitHub 原始碼</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span></span> macOS Menu Bar Utility • Apple Silicon Native
+      </div>
+      <div>
+        <img src="assets/app-icon.png" alt="NTFS Editor" class="hero-icon">
+      </div>
+      <h1>原生、輕巧、安全<br>macOS NTFS 讀寫神器</h1>
+      <p class="hero-sub">
+        告別笨重且昂貴的商業商業軟體。透過 macFUSE 核心 VFS 與受保護的 NTFS-3G 引擎，常駐頂部選單列一鍵安全掛載，直接在 Finder 中無縫拖曳複製、修改與管理檔案。
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/Manfredsun/NTFS-Editor-On-Macos/releases" class="btn-primary" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          下載 DMG 安裝檔 (v0.2.5)
+        </a>
+        <a href="https://github.com/Manfredsun/NTFS-Editor-On-Macos" class="btn-secondary" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          檢視 GitHub 倉庫
+        </a>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section id="features">
+      <div class="section-title">
+        <h2>為什麼選擇 NTFS Editor？</h2>
+        <p>為 macOS 開發者與專業工作者打造，專注輕量、簡潔與系統原生體驗</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">⚡️</div>
+          <h3>極簡選單列體驗</h3>
+          <p>採用 SwiftUI MenuBarExtra 架構，純 Menu Bar 常駐（不佔用 Dock 空間），點擊即時查閱 NTFS 磁碟健康、掛載狀態與可用容量。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📁</div>
+          <h3>Finder 原生無縫整合</h3>
+          <p>檔案操作全面回歸 Finder。完美支援原生拖曳複製、延伸屬性（xattr）、ResourceFork 雙向傳輸、改名與刪除，不需適應額外檔案總管介面。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h3>多層嚴格安全機制</h3>
+          <p>切換前安全卸載原唯讀掛載，鎖定 <code>windows_names</code> 與 <code>norecover</code> 等安全旗標；完整驗證磁碟識別與 Probe 狀態，守護資料完整性。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>macFUSE 核心 VFS 支援</h3>
+          <p>採用 macFUSE 5.5.0 核心延伸驅動（Kernel VFS），具備比傳統用戶態更高的傳輸效能與跨行程穩定性，大容量實體碟讀寫實測通過。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>特權隔離輔助程式</h3>
+          <p>特權掛載輔助程式無 setuid、無常駐 daemon。每次掛載前嚴格校驗二進制 SHA-256 數位特徵，透過管理員權限精確執行。</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3>100% 開源透明 (GPL-3.0)</h3>
+          <p>完全開源，零廣告、無背景遙測追蹤、無收費訂閱機制。程式碼公開受社群檢視，讓你完全掌握硬碟掌控權。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Banner -->
+    <section class="workflow-box" id="install">
+      <h3>三步驟快速啟用</h3>
+      <p style="color: var(--text-muted); margin-top: 6px;">一次性設定，完成後即可永久隨插即用</p>
+
+      <div class="steps">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h4>安裝主程式與 Helper</h4>
+          <p>將 App 拖入應用程式資料夾，並安裝隨附之 Mount Helper 套件與 macFUSE 5.5+。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h4>允許核心延伸功能</h4>
+          <p>在開機安全性設定中允許已識別開發者之核心延伸功能，並在「系統設定」允許 macFUSE。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h4>授予完全磁碟取用權</h4>
+          <p>在「隱私權與安全性」將 Helper 加入「完全磁碟取用權」，立即點擊切換讀寫！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specifications -->
+    <section>
+      <div class="section-title">
+        <h2>系統相容性與技術規格</h2>
+      </div>
+
+      <div class="card" style="max-width: 800px; margin: 0 auto;">
+        <table class="specs-table">
+          <tr>
+            <th>支援作業系統</th>
+            <td>macOS 15.0 (Sequoia) 及以上版本（支援 macOS 15.4+ 及 macOS 27）</td>
+          </tr>
+          <tr>
+            <th>處理器架構</th>
+            <td>Apple Silicon 原生架構（M1 / M2 / M3 / M4 系列晶片）</td>
+          </tr>
+          <tr>
+            <th>核心依賴</th>
+            <td>macFUSE 5.5.0+ (Kernel VFS Backend) 與 NTFS-3G 2026.9.28</td>
+          </tr>
+          <tr>
+            <th>UI 框架</th>
+            <td>SwiftUI MenuBarExtra（Swift 6 Strict Concurrency）</td>
+          </tr>
+          <tr>
+            <th>軟體授權</th>
+            <td>GNU General Public License v3.0 (GPL-3.0)</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="margin-top: 80px;">
+      <div class="section-title">
+        <h2>常見問答 (FAQ)</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h4>Q: 為什麼需要將安全性政策切換為「降低安全性」？</h4>
+          <p>macOS 從近代版本開始嚴格管控第三方檔案系統核心延伸功能（Kext）。開啟此選項僅代表允許使用者手動載入由認證開發者簽署的 macFUSE 驅動，<strong>系統完整性保護（SIP）依然維持開啟</strong>，不會降低 Mac 的核心防禦。</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Q: 為什麼寫入檔案需要完全磁碟取用權（Full Disk Access）？</h4>
+          <p>macOS TCC 隱私安全機制會阻擋背景程式直接開啟未掛載之區塊裝置（<code>/dev/rdisk*</code>）。為使 Helper 能進行 NTFS 安全 Probe 與寫入掛載，需將 Helper 路徑手動加入白名單。</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Q: 我在 Finder 拖拉複製帶有延伸屬性的檔案會失敗嗎？</h4>
+          <p>不會。在 v0.2.5 版本中已在掛載參數補上 <code>silent</code> 與 <code>auto_xattr</code>，完整支援 macOS 的 ResourceFork 與延伸屬性複製，避免出現 <code>error 100102</code>。</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Q: 這是免費的嗎？</h4>
+          <p>是的，NTFS Editor 是基於 GPL-3.0 發布的自由開源專案，完全免費，不包含任何商業授權買斷或訂閱機制。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>NTFS Editor for macOS is licensed under the <a href="https://github.com/Manfredsun/NTFS-Editor-On-Macos/blob/main/LICENSE" target="_blank">GNU General Public License v3.0</a>.</p>
+      <p style="margin-top: 8px;">Designed for macOS • Source code available on <a href="https://github.com/Manfredsun/NTFS-Editor-On-Macos" target="_blank">GitHub</a>.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+*.bak
+
+# Xcode & Swift Build
+.build/
+Build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcresult
+*.xcbkptlist
+
+# Binary Packages & Disk Images
+Dependencies/*.pkg
+Dependencies/*.dmg
+*.pkg
+*.dmg
+
+# Local Environment Snapshots & Test Logs (Private hardware UUIDs & serials)
+Evidence/
+ENVIRONMENT.md
+
+# AI Working Notes & Local Handover Files
+HANDOFF.md
+PLAN.md
+PROGRESS.md
+agent.md
+memory.md
+magnific__*.png

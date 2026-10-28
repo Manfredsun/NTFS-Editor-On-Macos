@@ -1,0 +1,668 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0FBBDE9694164CD48799F408 /* MountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE994302C2718726B5CD55F /* MountRequest.swift */; };
+		27049D2BA0DDF3D33E46E374 /* ManagedMountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA944F7516DF9A26A7E40AD /* ManagedMountStore.swift */; };
+		2A2F6B65A457BE9F4580FD87 /* DiskMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DBAB92764AC024F778D58 /* DiskMetadata.swift */; };
+		2C482C889CB4CCE3FDBB5022 /* MountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE994302C2718726B5CD55F /* MountRequest.swift */; };
+		2E9D9F5223E57502105D6362 /* AdminMountClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACB833FE2624B8C59BF183 /* AdminMountClient.swift */; };
+		573FB6B32468A67C1EAC350A /* NTFSEditorMountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977FFD75DE6AE23E3B09651 /* NTFSEditorMountHelper.swift */; };
+		6BB8FBCDB58695D601DACE5A /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DA9DED5868549F58A1886 /* MenuBarView.swift */; };
+		6F4A3DFDFCFE9499BBB45FB9 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D91A7B8B0B5C0E13260057 /* DiskArbitration.framework */; };
+		75767ADF17139990D810CDB1 /* ManagedMountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA944F7516DF9A26A7E40AD /* ManagedMountStore.swift */; };
+		76790FFC80C77B0AF05FE1AC /* DiskMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09FD8DF291731E3FF62188B /* DiskMonitorTests.swift */; };
+		80029111096308FC7FE9DCA7 /* NTFSVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADF3BC7D5AF3B7EDA1B71A /* NTFSVolume.swift */; };
+		83236E9FC982F3FBE1E41415 /* DiskMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DBAB92764AC024F778D58 /* DiskMetadata.swift */; };
+		86B25CA0CEEB947B9B274171 /* VolumeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6391D794142AA24CDCBDE3 /* VolumeRowView.swift */; };
+		9BF2A042DEEE81B88B39E5F7 /* DriverAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B09BB1C76FEBF22E000688 /* DriverAvailability.swift */; };
+		B48E7ABB41705FCBA8BB2CFE /* NTFSEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C5C14CBB2B8F119A2C28A /* NTFSEditorApp.swift */; };
+		C5E02763351B055EFEA33069 /* MountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EE6A04965CEA8B42FFEE3F /* MountCoordinator.swift */; };
+		C63717538E6C0F32AA056303 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB9EA6BB63714AB7EF78CA /* IOKit.framework */; };
+		D59368E62FBB16F3C69ACE27 /* NTFSVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADF3BC7D5AF3B7EDA1B71A /* NTFSVolume.swift */; };
+		D6DE5EED45E1FD6698EF84D2 /* ReadWriteSafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA4B20B472F22BAA7077CC /* ReadWriteSafetyTests.swift */; };
+		DFC98554F1C09F75D0F7BE3F /* DiskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E909F4982BD387E08CB9D /* DiskMonitor.swift */; };
+		E217AE4DA2057B2DCB21A826 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB9EA6BB63714AB7EF78CA /* IOKit.framework */; };
+		F30DE29B57BEC26DB91B5E8B /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D91A7B8B0B5C0E13260057 /* DiskArbitration.framework */; };
+		B1C2D3E4F5A60718293A4B5D /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B60718293A4B5E /* AppIcon.icns */; };
+		B1C2D3E4F5A60718293A4B5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B60718293A4B60 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2338B89AF7F78C8FF0AC6499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46D15D28E2E89FD8A3B589DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28026D8617EEEDAF6C9393B4;
+			remoteInfo = NTFSEditor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0908BB11F697180E3151571F /* NTFSEditorMountHelper */ = {isa = PBXFileReference; includeInIndex = 0; path = NTFSEditorMountHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D7E909F4982BD387E08CB9D /* DiskMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskMonitor.swift; sourceTree = "<group>"; };
+		27D91A7B8B0B5C0E13260057 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
+		2CADF3BC7D5AF3B7EDA1B71A /* NTFSVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTFSVolume.swift; sourceTree = "<group>"; };
+		3362D76E1836B208308A29B8 /* NTFSEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NTFSEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34EE6A04965CEA8B42FFEE3F /* MountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountCoordinator.swift; sourceTree = "<group>"; };
+		54ACB833FE2624B8C59BF183 /* AdminMountClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMountClient.swift; sourceTree = "<group>"; };
+		62FA4B20B472F22BAA7077CC /* ReadWriteSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteSafetyTests.swift; sourceTree = "<group>"; };
+		866C5C14CBB2B8F119A2C28A /* NTFSEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTFSEditorApp.swift; sourceTree = "<group>"; };
+		A09FD8DF291731E3FF62188B /* DiskMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskMonitorTests.swift; sourceTree = "<group>"; };
+		AC6391D794142AA24CDCBDE3 /* VolumeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeRowView.swift; sourceTree = "<group>"; };
+		B8DB9EA6BB63714AB7EF78CA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		CEA944F7516DF9A26A7E40AD /* ManagedMountStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMountStore.swift; sourceTree = "<group>"; };
+		D33DBAB92764AC024F778D58 /* DiskMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskMetadata.swift; sourceTree = "<group>"; };
+		D5B09BB1C76FEBF22E000688 /* DriverAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAvailability.swift; sourceTree = "<group>"; };
+		D977FFD75DE6AE23E3B09651 /* NTFSEditorMountHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTFSEditorMountHelper.swift; sourceTree = "<group>"; };
+		EFE994302C2718726B5CD55F /* MountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountRequest.swift; sourceTree = "<group>"; };
+		FA1DA9DED5868549F58A1886 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		FB3BEB3EF9803AC14EC95E9A /* NTFS Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NTFS Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1D2E3F4A5B60718293A4B5E /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		C1D2E3F4A5B60718293A4B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		065CE2B0A339E472A220F3CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F4A3DFDFCFE9499BBB45FB9 /* DiskArbitration.framework in Frameworks */,
+				C63717538E6C0F32AA056303 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8C3B228A22F6DBECF9B06B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F30DE29B57BEC26DB91B5E8B /* DiskArbitration.framework in Frameworks */,
+				E217AE4DA2057B2DCB21A826 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00DFF28CBEB97B34A03C6621 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				54ACB833FE2624B8C59BF183 /* AdminMountClient.swift */,
+				1D7E909F4982BD387E08CB9D /* DiskMonitor.swift */,
+				D5B09BB1C76FEBF22E000688 /* DriverAvailability.swift */,
+				34EE6A04965CEA8B42FFEE3F /* MountCoordinator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		23CA47385705A6E9F72EF6A7 = {
+			isa = PBXGroup;
+			children = (
+				E55100BAB905E38E1F18EB77 /* Helper */,
+				B465D68937B1E5EE02B46CC3 /* NTFSEditor */,
+				68B6D19056C64FD7DEEF8CCF /* Tests */,
+				474BA577BC3A1F795643938D /* Frameworks */,
+				76DF76E53D390847CC065C2E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4511DDECB520240E6018EF97 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				866C5C14CBB2B8F119A2C28A /* NTFSEditorApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		474BA577BC3A1F795643938D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27D91A7B8B0B5C0E13260057 /* DiskArbitration.framework */,
+				B8DB9EA6BB63714AB7EF78CA /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68B6D19056C64FD7DEEF8CCF /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A09FD8DF291731E3FF62188B /* DiskMonitorTests.swift */,
+				62FA4B20B472F22BAA7077CC /* ReadWriteSafetyTests.swift */,
+			);
+			name = Tests;
+			path = NTFSEditor/Tests;
+			sourceTree = "<group>";
+		};
+		69BE790E4F523B72AE21AEDC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D33DBAB92764AC024F778D58 /* DiskMetadata.swift */,
+				CEA944F7516DF9A26A7E40AD /* ManagedMountStore.swift */,
+				EFE994302C2718726B5CD55F /* MountRequest.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		76DF76E53D390847CC065C2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB3BEB3EF9803AC14EC95E9A /* NTFS Editor.app */,
+				0908BB11F697180E3151571F /* NTFSEditorMountHelper */,
+				3362D76E1836B208308A29B8 /* NTFSEditorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1EE92E5B7018E85682C7B9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CADF3BC7D5AF3B7EDA1B71A /* NTFSVolume.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AE14C788BBD37007E0DFAFAE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FA1DA9DED5868549F58A1886 /* MenuBarView.swift */,
+				AC6391D794142AA24CDCBDE3 /* VolumeRowView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B465D68937B1E5EE02B46CC3 /* NTFSEditor */ = {
+			isa = PBXGroup;
+			children = (
+				E1D2E3F4A5B60718293A4B61 /* Resources */,
+				4511DDECB520240E6018EF97 /* App */,
+				A1EE92E5B7018E85682C7B9B /* Models */,
+				00DFF28CBEB97B34A03C6621 /* Services */,
+				69BE790E4F523B72AE21AEDC /* Shared */,
+				AE14C788BBD37007E0DFAFAE /* UI */,
+			);
+			path = NTFSEditor;
+			sourceTree = "<group>";
+		};
+		E55100BAB905E38E1F18EB77 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D977FFD75DE6AE23E3B09651 /* NTFSEditorMountHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E1D2E3F4A5B60718293A4B61 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1D2E3F4A5B60718293A4B5E /* AppIcon.icns */,
+				C1D2E3F4A5B60718293A4B60 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28026D8617EEEDAF6C9393B4 /* NTFSEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9ACBF3A52F49F416B5D5329 /* Build configuration list for PBXNativeTarget "NTFSEditor" */;
+			buildPhases = (
+				0E9ABE104395FAEF0DE32CF6 /* Sources */,
+				065CE2B0A339E472A220F3CE /* Frameworks */,
+				A1B2C3D4E5F60718293A4B5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NTFSEditor;
+			packageProductDependencies = (
+			);
+			productName = NTFSEditor;
+			productReference = FB3BEB3EF9803AC14EC95E9A /* NTFS Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E97532026E3A5A382DDE1D2A /* NTFSEditorMountHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29CD955DCF06179E38DBED22 /* Build configuration list for PBXNativeTarget "NTFSEditorMountHelper" */;
+			buildPhases = (
+				40A59D8751FE044327D1A444 /* Sources */,
+				E8C3B228A22F6DBECF9B06B9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NTFSEditorMountHelper;
+			packageProductDependencies = (
+			);
+			productName = NTFSEditorMountHelper;
+			productReference = 0908BB11F697180E3151571F /* NTFSEditorMountHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+		F9367245C82EA0065DBE621F /* NTFSEditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F3F2F7F89AEAAFCC65A3C88 /* Build configuration list for PBXNativeTarget "NTFSEditorTests" */;
+			buildPhases = (
+				759E2D0A779A2467F5F36067 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5406063B8FE2705960E740B /* PBXTargetDependency */,
+			);
+			name = NTFSEditorTests;
+			packageProductDependencies = (
+			);
+			productName = NTFSEditorTests;
+			productReference = 3362D76E1836B208308A29B8 /* NTFSEditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46D15D28E2E89FD8A3B589DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					28026D8617EEEDAF6C9393B4 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					E97532026E3A5A382DDE1D2A = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					F9367245C82EA0065DBE621F = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 067394C5BFF4AACE5DD3D350 /* Build configuration list for PBXProject "NTFSEditor" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 23CA47385705A6E9F72EF6A7;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 76DF76E53D390847CC065C2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28026D8617EEEDAF6C9393B4 /* NTFSEditor */,
+				E97532026E3A5A382DDE1D2A /* NTFSEditorMountHelper */,
+				F9367245C82EA0065DBE621F /* NTFSEditorTests */,
+			);
+		};
+/* End PBXProject section */
+
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D4E5F60718293A4B5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C2D3E4F5A60718293A4B5D /* AppIcon.icns in Resources */,
+				B1C2D3E4F5A60718293A4B5F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+/* Begin PBXSourcesBuildPhase section */
+		0E9ABE104395FAEF0DE32CF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9D9F5223E57502105D6362 /* AdminMountClient.swift in Sources */,
+				83236E9FC982F3FBE1E41415 /* DiskMetadata.swift in Sources */,
+				DFC98554F1C09F75D0F7BE3F /* DiskMonitor.swift in Sources */,
+				9BF2A042DEEE81B88B39E5F7 /* DriverAvailability.swift in Sources */,
+				27049D2BA0DDF3D33E46E374 /* ManagedMountStore.swift in Sources */,
+				6BB8FBCDB58695D601DACE5A /* MenuBarView.swift in Sources */,
+				C5E02763351B055EFEA33069 /* MountCoordinator.swift in Sources */,
+				0FBBDE9694164CD48799F408 /* MountRequest.swift in Sources */,
+				B48E7ABB41705FCBA8BB2CFE /* NTFSEditorApp.swift in Sources */,
+				80029111096308FC7FE9DCA7 /* NTFSVolume.swift in Sources */,
+				86B25CA0CEEB947B9B274171 /* VolumeRowView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40A59D8751FE044327D1A444 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A2F6B65A457BE9F4580FD87 /* DiskMetadata.swift in Sources */,
+				75767ADF17139990D810CDB1 /* ManagedMountStore.swift in Sources */,
+				2C482C889CB4CCE3FDBB5022 /* MountRequest.swift in Sources */,
+				573FB6B32468A67C1EAC350A /* NTFSEditorMountHelper.swift in Sources */,
+				D59368E62FBB16F3C69ACE27 /* NTFSVolume.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		759E2D0A779A2467F5F36067 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76790FFC80C77B0AF05FE1AC /* DiskMonitorTests.swift in Sources */,
+				D6DE5EED45E1FD6698EF84D2 /* ReadWriteSafetyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5406063B8FE2705960E740B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28026D8617EEEDAF6C9393B4 /* NTFSEditor */;
+			targetProxy = 2338B89AF7F78C8FF0AC6499 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		30FF946C2E40C12F9FB0F0B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 0.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = local.NTFSEditor.mount.helper;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5557C35A1205ED3A7B447001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "NTFS Editor";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = local.NTFSEditor;
+				PRODUCT_MODULE_NAME = NTFSEditor;
+				PRODUCT_NAME = "NTFS Editor";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		618ABD167C2B8CE850854B07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 0.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = local.NTFSEditor.mount.helper;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		80EF605EF57912591A3EE318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AF87F172BCC7C3C3F73BA8B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		E4B9F0B47C48A0A25E49F7B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = local.NTFSEditorTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NTFS Editor.app/Contents/MacOS/NTFS Editor";
+			};
+			name = Release;
+		};
+		ED20E96EB5B71006B63DA765 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = local.NTFSEditorTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NTFS Editor.app/Contents/MacOS/NTFS Editor";
+			};
+			name = Debug;
+		};
+		F2ADDCD3F3B88D5ACC838CE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "NTFS Editor";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = local.NTFSEditor;
+				PRODUCT_MODULE_NAME = NTFSEditor;
+				PRODUCT_NAME = "NTFS Editor";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		067394C5BFF4AACE5DD3D350 /* Build configuration list for PBXProject "NTFSEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80EF605EF57912591A3EE318 /* Debug */,
+				AF87F172BCC7C3C3F73BA8B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		29CD955DCF06179E38DBED22 /* Build configuration list for PBXNativeTarget "NTFSEditorMountHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30FF946C2E40C12F9FB0F0B2 /* Debug */,
+				618ABD167C2B8CE850854B07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8F3F2F7F89AEAAFCC65A3C88 /* Build configuration list for PBXNativeTarget "NTFSEditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED20E96EB5B71006B63DA765 /* Debug */,
+				E4B9F0B47C48A0A25E49F7B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A9ACBF3A52F49F416B5D5329 /* Build configuration list for PBXNativeTarget "NTFSEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2ADDCD3F3B88D5ACC838CE4 /* Debug */,
+				5557C35A1205ED3A7B447001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46D15D28E2E89FD8A3B589DC /* Project object */;
+}

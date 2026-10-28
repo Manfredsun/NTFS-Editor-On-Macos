@@ -1,0 +1,79 @@
+name: NTFSEditor
+options:
+  minimumXcodeGenVersion: 2.46.0
+  deploymentTarget:
+    macOS: '14.0'
+settings:
+  base:
+    SWIFT_VERSION: '6.0'
+    SWIFT_STRICT_CONCURRENCY: complete
+    SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: '-'
+    DEVELOPMENT_TEAM: ''
+    ENABLE_APP_SANDBOX: NO
+    ENABLE_HARDENED_RUNTIME: YES
+    MACOSX_DEPLOYMENT_TARGET: '14.0'
+targets:
+  NTFSEditor:
+    type: application
+    productName: NTFS Editor
+    platform: macOS
+    sources:
+      - path: NTFSEditor
+        excludes: [Tests]
+    settings:
+      base:
+        PRODUCT_NAME: NTFS Editor
+        PRODUCT_MODULE_NAME: NTFSEditor
+        PRODUCT_BUNDLE_IDENTIFIER: local.NTFSEditor
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: NTFS Editor
+        INFOPLIST_KEY_CFBundleIconFile: AppIcon
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+        MARKETING_VERSION: '0.2.5'
+        CURRENT_PROJECT_VERSION: '7'
+    dependencies:
+      - sdk: DiskArbitration.framework
+      - sdk: IOKit.framework
+  NTFSEditorMountHelper:
+    type: tool
+    platform: macOS
+    sources:
+      - path: Helper
+      - path: NTFSEditor/Shared
+      - path: NTFSEditor/Models
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: local.NTFSEditor.mount.helper
+        GENERATE_INFOPLIST_FILE: YES
+        CREATE_INFOPLIST_SECTION_IN_BINARY: YES
+        MARKETING_VERSION: '0.2.5'
+        CURRENT_PROJECT_VERSION: '7'
+        MACOSX_DEPLOYMENT_TARGET: '15.4'
+        ARCHS: arm64
+    dependencies:
+      - sdk: DiskArbitration.framework
+      - sdk: IOKit.framework
+  NTFSEditorTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [NTFSEditor/Tests]
+    dependencies:
+      - target: NTFSEditor
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: local.NTFSEditorTests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/NTFS Editor.app/Contents/MacOS/NTFS Editor
+        BUNDLE_LOADER: $(TEST_HOST)
+schemes:
+  NTFSEditor:
+    build:
+      targets:
+        NTFSEditor: all
+        NTFSEditorMountHelper: all
+    test:
+      targets: [NTFSEditorTests]
