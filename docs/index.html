@@ -355,27 +355,6 @@
       font-size: 0.95rem;
     }
 
-    /* FAQ */
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--card-border);
-      padding: 24px 0;
-    }
-
-    .faq-item h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .faq-item p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
 
     /* Footer */
     footer {
@@ -413,7 +392,6 @@
       <div class="nav-links">
         <a href="#features" class="nav-link">功能亮點</a>
         <a href="#install" class="nav-link">安裝步驟</a>
-        <a href="#faq" class="nav-link">常見問題</a>
         <a href="https://github.com/Manfredsun/NTFS-Editor-On-Macos" target="_blank" class="btn-small">GitHub 原始碼</a>
       </div>
     </header>
@@ -544,34 +522,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" style="margin-top: 80px;">
-      <div class="section-title">
-        <h2>常見問答 (FAQ)</h2>
-      </div>
-
-      <div class="faq-list">
-        <div class="faq-item">
-          <h4>Q: 為什麼需要將安全性政策切換為「降低安全性」？</h4>
-          <p>macOS 從近代版本開始嚴格管控第三方檔案系統核心延伸功能（Kext）。開啟此選項僅代表允許使用者手動載入由認證開發者簽署的 macFUSE 驅動，<strong>系統完整性保護（SIP）依然維持開啟</strong>，不會降低 Mac 的核心防禦。</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Q: 為什麼寫入檔案需要完全磁碟取用權（Full Disk Access）？</h4>
-          <p>macOS TCC 隱私安全機制會阻擋背景程式直接開啟未掛載之區塊裝置（<code>/dev/rdisk*</code>）。為使 Helper 能進行 NTFS 安全 Probe 與寫入掛載，需將 Helper 路徑手動加入白名單。</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Q: 我在 Finder 拖拉複製帶有延伸屬性的檔案會失敗嗎？</h4>
-          <p>不會。在 v0.2.5 版本中已在掛載參數補上 <code>silent</code> 與 <code>auto_xattr</code>，完整支援 macOS 的 ResourceFork 與延伸屬性複製，避免出現 <code>error 100102</code>。</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Q: 這是免費的嗎？</h4>
-          <p>是的，NTFS Editor 是基於 GPL-3.0 發布的自由開源專案，完全免費，不包含任何商業授權買斷或訂閱機制。</p>
-        </div>
-      </div>
-    </section>
 
     <!-- Footer -->
     <footer>
