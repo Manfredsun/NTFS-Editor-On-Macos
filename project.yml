@@ -22,15 +22,16 @@ targets:
     platform: macOS
     sources:
       - path: NTFSEditor
-        excludes: [Tests]
+        excludes: [Tests, Info.plist]
     settings:
       base:
         PRODUCT_NAME: NTFS Editor
         PRODUCT_MODULE_NAME: NTFSEditor
         PRODUCT_BUNDLE_IDENTIFIER: local.NTFSEditor
         GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: NTFSEditor/Info.plist
         INFOPLIST_KEY_CFBundleDisplayName: NTFS Editor
-        INFOPLIST_KEY_CFBundleIconFile: AppIcon
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_KEY_LSUIElement: YES
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
         MARKETING_VERSION: '0.2.5'

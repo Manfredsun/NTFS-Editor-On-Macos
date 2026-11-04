@@ -40,10 +40,11 @@
 
 ## 🚀 下載與快速安裝
 
-1. 前往 [Releases](https://github.com/Manfredsun/NTFS-Editor-On-Macos/releases) 下載最新發布的 **`NTFS Editor-0.2.5.dmg`**。
+1. 前往 [Releases](https://github.com/Manfredsun/NTFS-Editor-On-Macos/releases) 下載最新安裝修訂版 **`NTFS.Editor-0.2.5-install-revision.dmg`**。
 2. 開啟 DMG：
    * 將 **`NTFS Editor.app`** 拖移至 **`/Applications`**。
    * 雙擊安裝 **`Install NTFS Editor Mount Helper 0.2.5.pkg`**。
+   * 如尚未安裝 macFUSE，雙擊安裝隨附的 **`Install macFUSE 5.5.0.pkg`**。
 3. **系統安全性與核心擴充授權**：
    * 詳細圖文步驟請參閱完整的 [**核心驅動與完全磁碟取用權設定指南 (INSTALL-KERNEL.md)**](INSTALL-KERNEL.md)。
    * *簡要說明*：Apple Silicon 需在「開機選項 → 啟動安全性工具程式」中將安全性調整為「降低安全性」並勾選「允許使用者管理核心延伸功能」（**不需要**停用 SIP），重啟後在「系統設定 → 隱私權與安全性」允許 macFUSE，並將 `NTFSEditorMountHelper` 加入「完全磁碟取用權」。
@@ -77,7 +78,7 @@ python3 scripts/prepare_engine.py
 xcodegen generate
 
 # 編譯 Release 產物
-xcodebuild -project NTFSEditor.xcodeproj -scheme NTFSEditor -configuration Release -derivedDataPath .build/Kernel025 ONLY_ACTIVE_ARCH=NO build
+xcodebuild -project NTFSEditor.xcodeproj -scheme NTFSEditor -configuration Release -derivedDataPath .build/Packaging025 ONLY_ACTIVE_ARCH=NO build
 ```
 
 ### 4. 打包 Helper PKG 與發布版 DMG
@@ -88,7 +89,7 @@ python3 scripts/package_helper.py
 # 打包正式發布用 DMG 映像檔
 python3 scripts/package_dmg.py
 ```
-打包完成後，產物將存放於 `Build/NTFS Editor-0.2.5.dmg`。
+打包前須準備官方 macFUSE 5.5.0 安裝套件至 `Dependencies/Install macFUSE 5.5.0.pkg`，並保留相符的 Helper 0.2.5 安裝套件。打包完成後，產物將存放於 `Build/NTFS Editor-0.2.5-install-revision.dmg`；原版 DMG 不會被覆蓋。隨附 macFUSE 的再發佈須符合其授權條款，商業捆綁需要事先取得授權。
 
 ---
 

@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0FBBDE9694164CD48799F408 /* MountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE994302C2718726B5CD55F /* MountRequest.swift */; };
+		1513AE128C283DED18A73B49 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EE55882D7DFA264B1A9F1B46 /* AppIcon.png */; };
 		27049D2BA0DDF3D33E46E374 /* ManagedMountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA944F7516DF9A26A7E40AD /* ManagedMountStore.swift */; };
 		2A2F6B65A457BE9F4580FD87 /* DiskMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DBAB92764AC024F778D58 /* DiskMetadata.swift */; };
 		2C482C889CB4CCE3FDBB5022 /* MountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE994302C2718726B5CD55F /* MountRequest.swift */; };
 		2E9D9F5223E57502105D6362 /* AdminMountClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACB833FE2624B8C59BF183 /* AdminMountClient.swift */; };
+		4B4BC4F20417858B604B322A /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 64BE11FA31025082CD3AD53F /* AppIcon.icns */; };
 		573FB6B32468A67C1EAC350A /* NTFSEditorMountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977FFD75DE6AE23E3B09651 /* NTFSEditorMountHelper.swift */; };
 		6BB8FBCDB58695D601DACE5A /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DA9DED5868549F58A1886 /* MenuBarView.swift */; };
 		6F4A3DFDFCFE9499BBB45FB9 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D91A7B8B0B5C0E13260057 /* DiskArbitration.framework */; };
@@ -29,8 +31,7 @@
 		DFC98554F1C09F75D0F7BE3F /* DiskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E909F4982BD387E08CB9D /* DiskMonitor.swift */; };
 		E217AE4DA2057B2DCB21A826 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB9EA6BB63714AB7EF78CA /* IOKit.framework */; };
 		F30DE29B57BEC26DB91B5E8B /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D91A7B8B0B5C0E13260057 /* DiskArbitration.framework */; };
-		B1C2D3E4F5A60718293A4B5D /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B60718293A4B5E /* AppIcon.icns */; };
-		B1C2D3E4F5A60718293A4B5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B60718293A4B60 /* Assets.xcassets */; };
+		FC465CB45E52D9690FD8F3F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0F8E00A6D12232695468D5 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		34EE6A04965CEA8B42FFEE3F /* MountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountCoordinator.swift; sourceTree = "<group>"; };
 		54ACB833FE2624B8C59BF183 /* AdminMountClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMountClient.swift; sourceTree = "<group>"; };
 		62FA4B20B472F22BAA7077CC /* ReadWriteSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteSafetyTests.swift; sourceTree = "<group>"; };
+		64BE11FA31025082CD3AD53F /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		866C5C14CBB2B8F119A2C28A /* NTFSEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTFSEditorApp.swift; sourceTree = "<group>"; };
 		A09FD8DF291731E3FF62188B /* DiskMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskMonitorTests.swift; sourceTree = "<group>"; };
 		AC6391D794142AA24CDCBDE3 /* VolumeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeRowView.swift; sourceTree = "<group>"; };
@@ -60,11 +62,11 @@
 		D33DBAB92764AC024F778D58 /* DiskMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskMetadata.swift; sourceTree = "<group>"; };
 		D5B09BB1C76FEBF22E000688 /* DriverAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAvailability.swift; sourceTree = "<group>"; };
 		D977FFD75DE6AE23E3B09651 /* NTFSEditorMountHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTFSEditorMountHelper.swift; sourceTree = "<group>"; };
+		EE55882D7DFA264B1A9F1B46 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		EFE994302C2718726B5CD55F /* MountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountRequest.swift; sourceTree = "<group>"; };
 		FA1DA9DED5868549F58A1886 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		FB3BEB3EF9803AC14EC95E9A /* NTFS Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NTFS Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1D2E3F4A5B60718293A4B5E /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
-		C1D2E3F4A5B60718293A4B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF0F8E00A6D12232695468D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,16 @@
 				34EE6A04965CEA8B42FFEE3F /* MountCoordinator.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1282271F090F933F3AB60D88 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				64BE11FA31025082CD3AD53F /* AppIcon.icns */,
+				EE55882D7DFA264B1A9F1B46 /* AppIcon.png */,
+				FF0F8E00A6D12232695468D5 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		23CA47385705A6E9F72EF6A7 = {
@@ -178,9 +190,9 @@
 		B465D68937B1E5EE02B46CC3 /* NTFSEditor */ = {
 			isa = PBXGroup;
 			children = (
-				E1D2E3F4A5B60718293A4B61 /* Resources */,
 				4511DDECB520240E6018EF97 /* App */,
 				A1EE92E5B7018E85682C7B9B /* Models */,
+				1282271F090F933F3AB60D88 /* Resources */,
 				00DFF28CBEB97B34A03C6621 /* Services */,
 				69BE790E4F523B72AE21AEDC /* Shared */,
 				AE14C788BBD37007E0DFAFAE /* UI */,
@@ -196,15 +208,6 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		E1D2E3F4A5B60718293A4B61 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				C1D2E3F4A5B60718293A4B5E /* AppIcon.icns */,
-				C1D2E3F4A5B60718293A4B60 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,8 +216,8 @@
 			buildConfigurationList = A9ACBF3A52F49F416B5D5329 /* Build configuration list for PBXNativeTarget "NTFSEditor" */;
 			buildPhases = (
 				0E9ABE104395FAEF0DE32CF6 /* Sources */,
+				920BFB50CEDB51A25E678AB2 /* Resources */,
 				065CE2B0A339E472A220F3CE /* Frameworks */,
-				A1B2C3D4E5F60718293A4B5C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -307,18 +310,19 @@
 		};
 /* End PBXProject section */
 
-
 /* Begin PBXResourcesBuildPhase section */
-		A1B2C3D4E5F60718293A4B5C /* Resources */ = {
+		920BFB50CEDB51A25E678AB2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1C2D3E4F5A60718293A4B5D /* AppIcon.icns in Resources */,
-				B1C2D3E4F5A60718293A4B5F /* Assets.xcassets in Resources */,
+				4B4BC4F20417858B604B322A /* AppIcon.icns in Resources */,
+				1513AE128C283DED18A73B49 /* AppIcon.png in Resources */,
+				FC465CB45E52D9690FD8F3F5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E9ABE104395FAEF0DE32CF6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -393,10 +397,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NTFSEditor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "NTFS Editor";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -604,10 +608,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NTFSEditor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "NTFS Editor";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;

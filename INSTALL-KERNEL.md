@@ -8,7 +8,7 @@
 
 1. **安裝主程式**：將 DMG 映像檔中的 `NTFS Editor.app` 拖曳至 `/Applications`（應用程式）資料夾。
 2. **安裝掛載輔助程式**：雙擊執行 DMG 內的 `Install NTFS Editor Mount Helper 0.2.5.pkg`，並輸入管理者密碼完成安裝。
-3. **安裝 macFUSE**：本軟體底層依賴 [macFUSE 5.5.0+](https://osxfuse.github.io/) 的核心 VFS 驅動。若系統尚未安裝，請先至官網下載並安裝最新版本。
+3. **安裝 macFUSE**：若尚未安裝，雙擊 DMG 內的 `Install macFUSE 5.5.0.pkg`，依照安裝程式指示完成安裝。本軟體需要 macFUSE 的核心 VFS 驅動；亦可從 [官方網站](https://macfuse.github.io/) 取得套件。macFUSE 的授權條款見 DMG 內的 `macFUSE License.rtf`。
 
 ---
 
